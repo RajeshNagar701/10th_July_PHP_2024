@@ -1,0 +1,46 @@
+
+
+.header{
+	width:100%;
+	height:80px;
+	float:left;
+	background-color:red;
+}
+
+.navbar{
+	width:100%;
+	height:50px;
+	float:left;
+	background-color:black;
+	color:white;
+}
+
+.banner{
+	width:100%;
+	height:150px;
+	float:left;
+	background-color:yellow;
+}
+
+.sidebar{
+	width:15%;
+	height:500px;
+	float:left;
+	background-color:LightGray;
+}
+
+
+.mainbar{
+	width:85%;
+	height:500px;
+	float:left;
+	background-color:pink;
+}
+
+.footer{
+	width:100%;
+	height:100px;
+	float:left;
+	background-color:black;
+	color:white;
+}

@@ -1,0 +1,29 @@
+	h1,h2,h3{
+			background-color:yellow;
+			color:red;
+			text-align:center;
+		}
+		
+		.p1{
+			background-color:green;
+			color:white;
+			text-decoration:underline;
+		}
+		
+		.uppercase{
+			text-transform:uppercase;
+		}
+		.textcenter{
+			text-align:center
+		}
+		
+		#p2{
+			background-color:blue;
+			color:white;
+			text-decoration:overline;
+		}
+		
+		h6.myhead{
+			font-family:Cursive;
+			background-color:pink;
+		}
