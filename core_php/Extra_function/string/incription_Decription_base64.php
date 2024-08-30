@@ -1,7 +1,17 @@
 <?php
-$text="Love";
-echo $encode=base64_encode($text);  //THIS IS FOR SECURUTY PASSAWARD CHANGE IN DIFFERENT KEYWORD
-echo "<br>". base64_decode($encode)."<br>";  //THIS IS FOR SECURUTY PASSAWARD CHANGE IN keyword to Real PASSAWARD 
-echo "<br>". md5($text);  //convert in to string in diffrerent keyward
-echo  "<br>". sha1($text);  
+
+// encription & decription function
+
+
+$text="abc";
+echo $encpass=base64_encode($text);
+echo "<br>";
+echo $decpass=base64_decode($encpass);
+echo "<br>";
+
+echo $md5enc=md5($text);
+
+echo "<br>";
+
+echo $sha1enc=sha1($text);
 ?>  

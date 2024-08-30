@@ -1,13 +1,14 @@
 <?php
 $lag=array("Hindi","English","Gujarati"); // find array value by if else
 	
-if(in_array("Hindi",$lag))
+if(in_array("Hindai",$lag))
 {
-	echo "match found";	
+	echo "Match";
 }
 else
 {
-	echo "match Not found";	
+	echo "Not Match";
 }
+
 
 ?>

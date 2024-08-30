@@ -1,4 +1,8 @@
 <?php
+
+// mktime(0,0,0,date("m")+2,date("d"),date("y"))  
+
+
 date_default_timezone_set('asia/calcutta');
 
 
