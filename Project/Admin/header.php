@@ -313,8 +313,8 @@
                 <i class="fa fa-th"></i> <span>Categories</span> <i class="fa fa-angle-left pull-right"></i>
               </a>
               <ul class="treeview-menu">
-                <li><a href="add_categories.php"><i class="fa fa-circle-o"></i> Add Categories</a></li>
-                <li><a href="manage_categories.php"><i class="fa fa-circle-o"></i> Manage Categories</a></li>
+                <li><a href="add_categories"><i class="fa fa-circle-o"></i> Add Categories</a></li>
+                <li><a href="manage_categories"><i class="fa fa-circle-o"></i> Manage Categories</a></li>
               </ul>
             </li>
 			
@@ -323,13 +323,13 @@
                 <i class="fa fa-th"></i> <span>Product</span> <i class="fa fa-angle-left pull-right"></i>
               </a>
               <ul class="treeview-menu">
-                <li><a href="add_product.php"><i class="fa fa-circle-o"></i> Add Product</a></li>
-                <li><a href="manage_product.php"><i class="fa fa-circle-o"></i> Manage Product</a></li>
+                <li><a href="add_product"><i class="fa fa-circle-o"></i> Add Product</a></li>
+                <li><a href="manage_product"><i class="fa fa-circle-o"></i> Manage Product</a></li>
               </ul>
             </li>
            
             <li>
-              <a href="manage_inquiry.php">
+              <a href="manage_inquiry">
                 <i class="fa fa-th"></i> <span>Manage Inquiry</span> 
               </a>
             </li>

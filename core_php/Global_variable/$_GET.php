@@ -5,7 +5,7 @@
 <body>
 
 <!-- 
-Method  2
+Method  get => $_GET['']
 
 -->
 <form action="" method="get">
@@ -20,8 +20,8 @@ Method  2
 <?php
 	if(isset($_GET['submit']))
 	{
-		echo $_GET['name'] . "<br>";
-		echo $_GET['age'] . "<br>";
+		echo $name=$_GET['name'];
+		echo $age=$_GET['age'];
 	}
 ?>
 

@@ -2,12 +2,15 @@
 
 /*
 
-A global variable is predefined variable.
+What is globals variable ?
+
+A global variable is super global & predefined variable.
 A global variable is a programming language construct, 
 a variable type that is declared outside any function 
 and is accessible to all functions throughout the program.
 
-$GLOBALS 
+1)$GLOBALS
+ 
 $_SERVER 
 $_REQUEST 
 $_POST 

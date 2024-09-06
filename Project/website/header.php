@@ -115,20 +115,20 @@ function active($currect_page){
                     </button>
                     <div class="collapse navbar-collapse justify-content-between" id="navbarCollapse">
                         <div class="navbar-nav py-0">
-                            <a href="index.php" class="nav-item nav-link <?php active('index.php')?>">Home</a>
-                            <a href="about.php" class="nav-item nav-link <?php active('about.php')?>">About</a>
-                            <a href="course.php" class="nav-item nav-link <?php active('course.php')?>">Courses</a>
-                            <a href="teacher.php" class="nav-item nav-link <?php active('teacher.php')?>">Teachers</a>
+                            <a href="index" class="nav-item nav-link <?php active('index')?>">Home</a>
+                            <a href="about" class="nav-item nav-link <?php active('about')?>">About</a>
+                            <a href="course" class="nav-item nav-link <?php active('course')?>">Courses</a>
+                            <a href="teacher" class="nav-item nav-link <?php active('teacher')?>">Teachers</a>
                             <div class="nav-item dropdown">
                                 <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">Blog</a>
                                 <div class="dropdown-menu rounded-0 m-0">
-                                    <a href="blog.php" class="dropdown-item <?php active('blog.php')?>">Blog List</a>
-                                    <a href="single.php" class="dropdown-item <?php active('single.php')?>">Blog Detail</a>
+                                    <a href="blog" class="dropdown-item <?php active('blog')?>">Blog List</a>
+                                    <a href="single" class="dropdown-item <?php active('single')?>">Blog Detail</a>
                                 </div>
                             </div>
-                            <a href="contact.php" class="nav-item nav-link <?php active('contact.php')?>">Contact</a>
+                            <a href="contact" class="nav-item nav-link <?php active('contact')?>">Contact</a>
                         </div>
-                        <a class="btn btn-primary py-2 px-4 ml-auto d-none d-lg-block" href="login.php">Join Now</a>
+                        <a class="btn btn-primary py-2 px-4 ml-auto d-none d-lg-block" href="login">Join Now</a>
                     </div>
                 </nav>
             </div>
