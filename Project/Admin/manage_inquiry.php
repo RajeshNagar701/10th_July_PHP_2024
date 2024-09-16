@@ -29,22 +29,31 @@ include_once('header.php');
                     <thead>
                       <tr>
                         <th>Id</th>
-                        <th>Product Name</th>
-                        <th>Image</th>
+                        <th>Name</th>
+						<th>Mobile</th>
+						<th>Comment</th>
                         <th>Action</th>
                       </tr>
                     </thead>
                     <tbody>
-                      <tr>
-                        <td>1</td>
-                        <td>Software</td>
-                        <td><img src="" /></td>
-                        <td>
-							<a href="" class="btn btn-danger">Delete</a>
-							<a href="" class="btn btn-primary">Edit</a>
-						</td>
-                        
-                      </tr>
+                      <?php
+						foreach($cont_arr as $data)
+						{
+						?>
+						  <tr>
+							<td><?php echo $data->id?></td>
+							<td><?php echo $data->name?></td>
+							<td><?php echo $data->mobile?></td>
+							<td><?php echo $data->comment?></td>
+							<td>
+								<a href="" class="btn btn-danger">Delete</a>
+								<a href="" class="btn btn-primary">Edit</a>
+							</td>
+							
+						  </tr>
+					   <?php
+						}
+				   ?>   
                       
                     </tfoot>
                   </table>

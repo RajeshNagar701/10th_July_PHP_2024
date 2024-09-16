@@ -1,9 +1,15 @@
 <?php
 
-class control{
+include_once('../Admin/model.php');   // step 1 load model 
+
+
+class control extends model  // step 2 extends model class
+{
 	
-	function __construct(){ // magic function call automatic when we declare class object
-					
+		function __construct(){ // magic function call automatic when we declare class object
+		
+		model::__construct();  // step 3 call model __construct
+		
 		$url=$_SERVER['PATH_INFO'];
 		
 		switch($url)
@@ -17,6 +23,7 @@ class control{
 			break;
 			
 			case '/course':
+				$arr_project=$this->select('products');
 				include_once('course.php');
 			break;
 			

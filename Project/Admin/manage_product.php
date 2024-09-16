@@ -30,21 +30,32 @@ include_once('header.php');
                       <tr>
                         <th>Id</th>
                         <th>Product Name</th>
+						<th>Price</th>
                         <th>Image</th>
+						<th>Description</th>
                         <th>Action</th>
                       </tr>
                     </thead>
                     <tbody>
-                      <tr>
-                        <td>1</td>
-                        <td>Software</td>
-                        <td><img src="" /></td>
-                        <td>
-							<a href="" class="btn btn-danger">Delete</a>
-							<a href="" class="btn btn-primary">Edit</a>
-						</td>
-                        
-                      </tr>
+                      <?php
+						foreach($prod_arr as $data)
+						{
+						?>
+						  <tr>
+							<td><?php echo $data->id?></td>
+							<td><?php echo $data->name?></td>
+							<td><?php echo $data->price?></td>
+							<td><?php echo $data->img?><img src="" /></td>
+							<td><?php echo $data->description?></td>
+							<td>
+								<a href="" class="btn btn-danger">Delete</a>
+								<a href="" class="btn btn-primary">Edit</a>
+							</td>
+							
+						  </tr>
+					   <?php
+						}
+				   ?>   
                       
                     </tfoot>
                   </table>

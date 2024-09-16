@@ -7,13 +7,13 @@ include_once('header.php');
         <!-- Content Header (Page header) -->
         <section class="content-header">
           <h1>
-            Manage Categories
-            <small>Manage Categories</small>
+            Manage Customer
+            <small>Manage Customer</small>
           </h1>
           <ol class="breadcrumb">
             <li><a href="#"><i class="fa fa-dashboard"></i> Home</a></li>
-            <li><a href="#">Categories</a></li>
-            <li class="active">Manage Categories</li>
+            <li><a href="#">Customer</a></li>
+            <li class="active">Manage Customer</li>
           </ol>
         </section>
 
@@ -29,30 +29,36 @@ include_once('header.php');
                     <thead>
                       <tr>
                         <th>Id</th>
-                        <th>Categories Name</th>
-                        <th>Image</th>
+                        <th>Name</th>
+						<th>Email</th>
+						<th>Password</th>
+						<th>Mobile</th>
+						<th>DOB</th>
                         <th>Action</th>
                       </tr>
                     </thead>
                     <tbody>
-					
-					<?php
-					foreach($cate_arr as $data)
-					{
-					?>
-                      <tr>
-                        <td><?php echo $data->id?></td>
-                        <td><?php echo $data->cate_name?></td>
-                        <td><?php echo $data->cate_img?><img src="" /></td>
-                        <td>
-							<a href="" class="btn btn-danger">Delete</a>
-							<a href="" class="btn btn-primary">Edit</a>
-						</td>
-                        
-                      </tr>
-                   <?php
-					}
+                      <?php
+						foreach($cust_arr as $data)
+						{
+						?>
+						  <tr>
+							<td><?php echo $data->id?></td>
+							<td><?php echo $data->name?></td>
+							<td><?php echo $data->email?></td>
+							<td><?php echo $data->password?></td>
+							<td><?php echo $data->mobile?></td>
+							<td><?php echo $data->dob?></td>
+							<td>
+								<a href="" class="btn btn-danger">Delete</a>
+								<a href="" class="btn btn-primary">Edit</a>
+							</td>
+							
+						  </tr>
+					   <?php
+						}
 				   ?>   
+                      
                     </tfoot>
                   </table>
                 </div><!-- /.box-body -->

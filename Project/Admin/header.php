@@ -333,6 +333,12 @@
                 <i class="fa fa-th"></i> <span>Manage Inquiry</span> 
               </a>
             </li>
+			
+			 <li>
+              <a href="manage_customer">
+                <i class="fa fa-th"></i> <span>Manage Customer</span> 
+              </a>
+            </li>
            
           </ul>
         </section>
