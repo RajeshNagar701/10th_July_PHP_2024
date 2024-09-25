@@ -29,11 +29,13 @@ include_once('header.php');
                     <thead>
                       <tr>
                         <th>Id</th>
+						<th>Profile</th>
                         <th>Name</th>
 						<th>Email</th>
 						<th>Password</th>
-						<th>Mobile</th>
-						<th>DOB</th>
+						<th>Gender</th>
+						<th>Lag</th>
+						<th>Country</th>
                         <th>Action</th>
                       </tr>
                     </thead>
@@ -44,11 +46,13 @@ include_once('header.php');
 						?>
 						  <tr>
 							<td><?php echo $data->id?></td>
+							<td><img src="../website/img/customer/<?php echo $data->img?>"  width="50px"/></td>
 							<td><?php echo $data->name?></td>
 							<td><?php echo $data->email?></td>
 							<td><?php echo $data->password?></td>
-							<td><?php echo $data->mobile?></td>
-							<td><?php echo $data->dob?></td>
+							<td><?php echo $data->gender?></td>
+							<td><?php echo $data->lag?></td>
+							<td><?php echo $data->cid?></td>
 							<td>
 								<a href="" class="btn btn-danger">Delete</a>
 								<a href="" class="btn btn-primary">Edit</a>

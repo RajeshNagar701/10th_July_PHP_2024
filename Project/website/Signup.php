@@ -29,19 +29,19 @@
             <div class="row justify-content-center">
                 <div class="col-lg-8">
                     <div class="contact-form bg-secondary rounded p-5">
-                        <div id="success"></div>
-                        <form name="sentMessage" id="contactForm" novalidate="novalidate">
+                       
+                        <form method="post" enctype="multipart/form-data">
                             
 							<div class="control-group">
-                                <input type="text" name="name" class="form-control border-0 p-4" id="name" placeholder="Your Name" required="required" data-validation-required-message="Please enter your Name" />
+                                <input type="text" name="name" class="form-control border-0 p-4" id="name" placeholder="Your Name" required="required"  />
                                 <p class="help-block text-danger"></p>
                             </div>
                             <div class="control-group">
-                                <input type="email" name="email" class="form-control border-0 p-4" id="email" placeholder="Your Email" required="required" data-validation-required-message="Please enter your email" />
+                                <input type="email" name="email" class="form-control border-0 p-4" id="email" placeholder="Your Email" required="required"/>
                                 <p class="help-block text-danger"></p>
                             </div>
                             <div class="control-group">
-                                <input type="password" name="password" class="form-control border-0 p-4" id="password" placeholder="Your password" required="required" data-validation-required-message="Please enter your password" />
+                                <input type="password" name="password" class="form-control border-0 p-4" id="password" placeholder="Your password" required="required" />
                                 <p class="help-block text-danger"></p>
                             </div>
 							<br>
@@ -53,25 +53,36 @@
 							<br>
 							<div class="control-group">
 								<b>Hobby :</b> 
-                                Dance : <input type="checkbox" name="hobby[]"  value="Dance"/>
-                                Sports : <input type="checkbox" name="hobby[]"  value="Sports"/>
-								Music : <input type="checkbox" name="hobby[]"  value="Music"/>
+                                Dance : <input type="checkbox" name="lag[]"  value="Dance"/>
+                                Sports : <input type="checkbox" name="lag[]"  value="Sports"/>
+								Music : <input type="checkbox" name="lag[]"  value="Music"/>
                             </div>
 							<br>
 							 <div class="control-group">
                                 Country : 
-								<select name="country" class="form-control" >
+								<select name="cid" class="form-control" >
 									<option style="color:black">------ Select Country ------</option>
-									<option>India</option>
+									
+									<?php
+									foreach($arr_country as $w)
+									{
+									?>
+										<option value="<?php echo $w->id;?>"><?php echo $w->name;?></option>
+									<?php
+									}
+									?>
 								</select>
                                 <p class="help-block text-danger"></p>
                             </div>
-							
+							<div class="control-group">
+                                <input type="file" name="img" class="form-control border-0 p-4" required="required" />
+                                <p class="help-block text-danger"></p>
+                            </div>
                             <div class="text-center">
-                                <button class="btn btn-primary py-3 px-5" type="submit" id="sendMessageButton">Signup</button>
+                                <input name="submit" class="btn btn-primary py-3 px-5" type="submit" value="Signup">
                             </div>
 							<br>
-							<a href="login.php">If you already registered then Click Here</a>
+							<a href="login">If you already registered then Click Here</a>
                         </form>
                     </div>
                 </div>

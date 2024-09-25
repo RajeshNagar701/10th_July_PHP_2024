@@ -40,7 +40,29 @@ class control extends model  // step 2 extends model class
 			break;
 			
 			case '/contact':
-				echo "<h1>Hello</h1>";	
+				
+				if(isset($_REQUEST['submit']))
+				{
+					$name=$_REQUEST['name'];
+					$email=$_REQUEST['email'];
+					$mobile=$_REQUEST['mobile'];
+					$comment=$_REQUEST['comment'];
+					
+					$arr=array("name"=>$name,"email"=>$email,"mobile"=>$mobile,"comment"=>$comment);
+					
+					$res=$this->insert('contacts',$arr);
+					if($res)
+					{
+						echo "<script>
+							alert('Contact submited suuccessfully');
+							window.location='contact';
+						</script>";
+					}
+					else
+					{
+						echo "Not success";
+					}
+				}
 				include_once('contact.php');
 			break;
 			
@@ -49,6 +71,45 @@ class control extends model  // step 2 extends model class
 			break;
 			
 			case '/signup':
+				$arr_country=$this->select('country');
+				if(isset($_REQUEST['submit']))
+				{
+					$name=$_REQUEST['name'];
+					$email=$_REQUEST['email'];
+					$password=$_REQUEST['password'];
+					$pass_enc=md5($password);
+					$gender=$_REQUEST['gender'];
+					
+					$lag_arr=$_REQUEST['lag'];
+					$lag=implode(",",$lag_arr);
+					
+					$cid=$_REQUEST['cid'];
+					
+					
+					echo $img=$_FILES['img']['name'];
+	
+					// upload img in folder
+					$path='img/customer/'.$img;     // path
+					$dupimg=$_FILES['img']['tmp_name'];  // duplicate imag get
+					move_uploaded_file($dupimg,$path);  // move duplicate img in path
+					
+					
+					$arr=array("name"=>$name,"email"=>$email,"password"=>$pass_enc,"gender"=>$gender,"lag"=>$lag
+					,"cid"=>$cid,"img"=>$img);
+					
+					$res=$this->insert('customer',$arr);
+					if($res)
+					{
+						echo "<script>
+							alert('Signup suuccessfully');
+							window.location='signup';
+						</script>";
+					}
+					else
+					{
+						echo "Not success";
+					}
+				}
 				include_once('signup.php');
 			break;
 			

@@ -24,6 +24,21 @@ class model{
 		return $arr;
 	}
 	
+	function insert($tbl,$arr)
+	{
+		
+		$col_arr=array_keys($arr); // array("0"=>"name","1"=>"email");
+		$col=implode(",",$col_arr); // arr to string  name,email
+		
+		$value_arr=array_values($arr); // array("0"=>"raj","1"=>"raj@gmail");
+		$value=implode("','",$value_arr); // arr to string  ' raj','raj@gmail','12345678 '
+
+		
+		echo $sel="insert into $tbl ($col) values ('$value')";  // query
+		$run=$this->conn->query($sel);   // query run on db
+		return $run;
+	}
+	
 }
 $obj=new model;
 

@@ -45,7 +45,7 @@
                             </div>
 							
 							<br>
-							<a href="signup.php">If you not registered Yet then Click Here</a>
+							<a href="signup">If you not registered Yet then Click Here</a>
                         </form>
                     </div>
                 </div>
