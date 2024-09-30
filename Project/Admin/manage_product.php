@@ -12,8 +12,8 @@ include_once('header.php');
           </h1>
           <ol class="breadcrumb">
             <li><a href="#"><i class="fa fa-dashboard"></i> Home</a></li>
-            <li><a href="#">Product</a></li>
-            <li class="active">Manage Product</li>
+            <li><a href="#">Course</a></li>
+            <li class="active">Manage Course</li>
           </ol>
         </section>
 
@@ -29,7 +29,8 @@ include_once('header.php');
                     <thead>
                       <tr>
                         <th>Id</th>
-                        <th>Product Name</th>
+                        <th>Course Name</th>
+						<th>Categories</th>
 						<th>Price</th>
                         <th>Image</th>
 						<th>Description</th>
@@ -44,8 +45,9 @@ include_once('header.php');
 						  <tr>
 							<td><?php echo $data->id?></td>
 							<td><?php echo $data->name?></td>
+							<td><?php echo $data->cate_name?></td>
 							<td><?php echo $data->price?></td>
-							<td><?php echo $data->img?><img src="" /></td>
+							<td><img src="upload/course/<?php echo $data->img?>" width="50px"></td>
 							<td><?php echo $data->description?></td>
 							<td>
 								<a href="" class="btn btn-danger">Delete</a>

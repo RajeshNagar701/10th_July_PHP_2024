@@ -23,7 +23,33 @@ class control extends model  // step 2 extends model class
 			break;
 			
 			case '/add_categories':
-				
+				if(isset($_REQUEST['submit']))
+				{
+					$cate_name=$_REQUEST['cate_name'];
+					
+					echo $cate_img=$_FILES['cate_img']['name'];
+	
+					// upload img in folder
+					$path='upload/categories/'.$cate_img;     // path
+					$dupcate_img=$_FILES['cate_img']['tmp_name'];  // duplicate imag get
+					move_uploaded_file($dupcate_img,$path);  // move duplicate img in path
+					
+					
+					$arr=array("cate_name"=>$cate_name,"cate_img"=>$cate_img);
+					
+					$res=$this->insert('categories',$arr);
+					if($res)
+					{
+						echo "<script>
+							alert('Categories add suuccessfully');
+							window.location='add_categories';
+						</script>";
+					}
+					else
+					{
+						echo "Not success";
+					}
+				}
 				include_once('add_categories.php');
 			break;
 			
@@ -33,11 +59,43 @@ class control extends model  // step 2 extends model class
 			break;
 			
 			case '/add_product':
+			
+				$cate_arr=$this->select('categories');
+				if(isset($_REQUEST['submit']))
+				{
+					$cate_id=$_REQUEST['cate_id'];
+					$name=$_REQUEST['name'];
+					$price=$_REQUEST['price'];
+					$description=$_REQUEST['description'];
+				
+					echo $course_img=$_FILES['img']['name'];
+	
+					// upload img in folder
+					$path='upload/course/'.$course_img;     // path
+					$dupcourse_img=$_FILES['img']['tmp_name'];  // duplicate imag get
+					move_uploaded_file($dupcourse_img,$path);  // move duplicate img in path
+					
+					
+					$arr=array("cate_id"=>$cate_id,"name"=>$name,"price"=>$price,"img"=>$course_img,"description"=>$description);
+					
+					$res=$this->insert('products',$arr);
+					if($res)
+					{
+						echo "<script>
+							alert('Course add suuccessfully');
+							window.location='add_product';
+						</script>";
+					}
+					else
+					{
+						echo "Not success";
+					}
+				}
 				include_once('add_product.php');
 			break;
 			
 			case '/manage_product':
-				$prod_arr=$this->select('products');
+				$prod_arr=$this->select_join('products','categories','cate_name','categories.id=products.cate_id');
 				include_once('manage_product.php');
 			break;
 			

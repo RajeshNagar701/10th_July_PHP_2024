@@ -28,22 +28,24 @@
             </div>
             <div class="row">
 				<?php 
-				foreach($arr_categories as $data)
+				foreach($arr_course as $data)
 				{
 				?>
                 <div class="col-lg-4 col-md-6 mb-4">
                     <div class="rounded overflow-hidden mb-2">
-                        <img class="img-fluid" src="../Admin/upload/categories/<?php echo $data->cate_img?>" alt="">
+                        <img class="img-fluid" src="../Admin/upload/course/<?php echo $data->img?>" alt="">
                         <div class="bg-secondary p-4">
                             <div class="d-flex justify-content-between mb-3">
-                                <small class="m-0"><i class="fa fa-users text-primary mr-2"></i><?php echo $data->cate_name?></small>
+                                <small class="m-0"><i class="fa fa-users text-primary mr-2"></i><?php echo $data->name?></small>
                                 <small class="m-0"><i class="far fa-clock text-primary mr-2"></i>01h 30m</small>
                             </div>
-                            <a class="h5" href=""></a>
+                            <a class="h5" href=""><?php echo $data->description;?></a>
                             <div class="border-top mt-4 pt-4">
                                 <div class="d-flex justify-content-between">
                                     <h6 class="m-0"><i class="fa fa-star text-primary mr-2"></i>4.5 <small>(250)</small></h6>
-                                    <h5 class="m-0"><a href="course_view?btn_course=<?php echo $data->id?>">View Course</a></h5>
+                                    <h5 class="m-0">$<?php echo $data->price?></h5>
+									<br><br>
+									<h5 class="m-0"><a href="course_details?btn_course=<?php echo $data->id?>">View Course</a></h5>
                                 </div>
                             </div>
                         </div>

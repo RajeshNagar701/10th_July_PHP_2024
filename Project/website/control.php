@@ -23,8 +23,19 @@ class control extends model  // step 2 extends model class
 			break;
 			
 			case '/course':
-				$arr_project=$this->select('products');
+				$arr_categories=$this->select('categories');
 				include_once('course.php');
+			break;
+			
+			case '/course_view':
+				$arr_course=$this->select('products');
+				if(isset($_REQUEST['btn_course']))
+				{
+					$cate_id=$_REQUEST['btn_course'];
+					$where='cate_id='.$cate_id;
+					$arr_course=$this->select_where('products',$where);
+				}
+				include_once('course_view.php');
 			break;
 			
 			case '/teacher':

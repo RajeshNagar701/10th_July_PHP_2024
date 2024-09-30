@@ -24,6 +24,30 @@ class model{
 		return $arr;
 	}
 	
+	function select_join($tbl1,$tbl2,$col,$on)
+	{
+		echo $sel="select $tbl1.*,$tbl2.$col from $tbl1 join $tbl2 on $on";  // query
+		$run=$this->conn->query($sel);   // query run on db
+		while($fetch=$run->fetch_object()) // fetch all data
+		{
+			$arr[]=$fetch;
+		}
+		return $arr;
+	}
+	
+	function select_where($tbl,$where)
+	{
+		$sel="select * from $tbl where $where";  // query
+		$run=$this->conn->query($sel);   // query run on db
+		while($fetch=$run->fetch_object()) // fetch all data
+		{
+			$arr[]=$fetch;
+		}
+		return $arr;
+	}
+	
+	
+	
 	function insert($tbl,$arr)
 	{
 		
