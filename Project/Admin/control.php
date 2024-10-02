@@ -15,6 +15,30 @@ class control extends model  // step 2 extends model class
 		switch($url)
 		{
 			case '/admin-login':
+				if(isset($_REQUEST['login']))
+				{
+					$email=$_REQUEST['email'];
+					$password=md5($_REQUEST['password']);
+					
+					$where=array("email"=>$email,"password"=>$password);
+					
+					$res=$this->select_dynamicwhere('admin',$where);
+					$chk=$res->num_rows; //check row wise condition
+					if($chk==1) // 1 true 0 false
+					{
+						echo "<script>
+							alert('Login suuccessfully');
+							window.location='dashboard';
+						</script>";
+					}
+					else
+					{
+						echo "<script>
+							alert('Login failed due to wrong crendential');
+							window.location='admin-login';
+						</script>";
+					}
+				}
 				include_once('index.php');
 			break;
 			

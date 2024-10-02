@@ -78,6 +78,30 @@ class control extends model  // step 2 extends model class
 			break;
 			
 			case '/login':
+				if(isset($_REQUEST['login']))
+				{
+					$email=$_REQUEST['email'];
+					$password=md5($_REQUEST['password']);
+					
+					$where=array("email"=>$email,"password"=>$password,"status"=>"Unblock");
+					
+					$res=$this->select_dynamicwhere('customer',$where);
+					$chk=$res->num_rows; //check row wise condition
+					if($chk==1) // 1 true 0 false
+					{
+						echo "<script>
+							alert('Login suuccessfully');
+							window.location='index';
+						</script>";
+					}
+					else
+					{
+						echo "<script>
+							alert('Login failed due to wrong crendential');
+							window.location='login';
+						</script>";
+					}
+				}
 				include_once('login.php');
 			break;
 			
