@@ -68,11 +68,20 @@ function active($currect_page){
             </div>
             <div class="col-lg-3 text-right">
                 <div class="d-inline-flex align-items-center">
-                    <i class="fa fa-2x fa-phone text-primary mr-3"></i>
+				<?php
+					if(isset($_SESSION['userid']))
+					{
+					?>
+                    <i class="fa fa-2x fa-user text-primary mr-3"></i>
                     <div class="text-left">
-                        <h6 class="font-weight-semi-bold mb-1">Call Us</h6>
-                        <small>+091 345 6789</small>
+                        <h6 class="font-weight-semi-bold mb-1">
+							<?php echo $_SESSION['username']?>
+						</h6>
                     </div>
+					<?php	
+					}
+					?>
+						
                 </div>
             </div>
         </div>
@@ -128,8 +137,21 @@ function active($currect_page){
                             </div>
                             <a href="contact" class="nav-item nav-link <?php active('contact')?>">Contact</a>
                         </div>
-                        <a class="btn btn-primary py-2 px-4 ml-auto d-none d-lg-block" href="login">Join Now</a>
-                    </div>
+						<?php
+						if(isset($_SESSION['userid']))
+						{
+						?>
+							<a class="btn btn-primary py-2 px-4 ml-auto d-none d-lg-block" href="userlogout">Logout</a>
+						<?php
+						}
+						else
+						{
+						?>
+							<a class="btn btn-primary py-2 px-4 ml-auto d-none d-lg-block" href="login">Join Now</a>
+						<?php
+						}
+						?>
+					</div>
                 </nav>
             </div>
         </div>

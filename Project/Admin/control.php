@@ -8,6 +8,7 @@ class control extends model  // step 2 extends model class
 	
 	function __construct(){ // magic function call automatic when we declare class object
 				
+		session_start();		
 		model::__construct(); // step 3 call model __construct
 				
 		$url=$_SERVER['PATH_INFO'];
@@ -22,10 +23,15 @@ class control extends model  // step 2 extends model class
 					
 					$where=array("email"=>$email,"password"=>$password);
 					
-					$res=$this->select_dynamicwhere('admin',$where);
+					$res=$this->select_where('admin',$where);
 					$chk=$res->num_rows; //check row wise condition
 					if($chk==1) // 1 true 0 false
 					{
+						// session
+						$fetch=$res->fetch_object();
+						
+						$_SESSION['adminname']=$fetch->name;
+						$_SESSION['adminid']=$fetch->id;
 						echo "<script>
 							alert('Login suuccessfully');
 							window.location='dashboard';
@@ -40,6 +46,17 @@ class control extends model  // step 2 extends model class
 					}
 				}
 				include_once('index.php');
+			break;
+			
+			case '/adminlogout':
+			
+				unset($_SESSION['adminid']);
+				unset($_SESSION['adminname']);
+				echo "<script>
+							alert('Logout Succesfull');
+							window.location='admin-login';
+						</script>";
+				
 			break;
 			
 			case '/dashboard':

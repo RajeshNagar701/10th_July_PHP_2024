@@ -1,3 +1,13 @@
+
+<?php
+if(isset($_SESSION['adminid']))
+{
+	echo "<script>
+		window.location='dashboard';
+	</script>";
+}
+?>
+
 <!DOCTYPE html>
 <html>
   <head>

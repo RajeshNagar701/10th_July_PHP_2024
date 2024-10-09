@@ -7,7 +7,7 @@ class control extends model  // step 2 extends model class
 {
 	
 		function __construct(){ // magic function call automatic when we declare class object
-		
+		session_start();
 		model::__construct();  // step 3 call model __construct
 		
 		$url=$_SERVER['PATH_INFO'];
@@ -28,12 +28,15 @@ class control extends model  // step 2 extends model class
 			break;
 			
 			case '/course_view':
-				$arr_course=$this->select('products');
 				if(isset($_REQUEST['btn_course']))
 				{
 					$cate_id=$_REQUEST['btn_course'];
-					$where='cate_id='.$cate_id;
-					$arr_course=$this->select_where('products',$where);
+					$where=array("cate_id"=>$cate_id);
+					$res=$this->select_where('products',$where);
+					while($fetch=$res->fetch_object()) // fetch all data
+					{
+						$arr_course[]=$fetch;
+					}
 				}
 				include_once('course_view.php');
 			break;
@@ -85,10 +88,18 @@ class control extends model  // step 2 extends model class
 					
 					$where=array("email"=>$email,"password"=>$password,"status"=>"Unblock");
 					
-					$res=$this->select_dynamicwhere('customer',$where);
+					//login
+					$res=$this->select_where('customer',$where);
 					$chk=$res->num_rows; //check row wise condition
+					
 					if($chk==1) // 1 true 0 false
 					{
+						
+						$fetch=$res->fetch_object();
+						
+						$_SESSION['username']=$fetch->name;
+						$_SESSION['userid']=$fetch->id;
+						
 						echo "<script>
 							alert('Login suuccessfully');
 							window.location='index';
@@ -104,6 +115,18 @@ class control extends model  // step 2 extends model class
 				}
 				include_once('login.php');
 			break;
+			
+			case '/userlogout':
+			
+				unset($_SESSION['userid']);
+				unset($_SESSION['username']);
+				echo "<script>
+							alert('Logout Succesfull');
+							window.location='index';
+						</script>";
+				
+			break;
+			
 			
 			case '/signup':
 				$arr_country=$this->select('country');

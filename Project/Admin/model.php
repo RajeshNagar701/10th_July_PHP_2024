@@ -24,19 +24,8 @@ class model{
 		return $arr;
 	}
 	
+	//where condition login / fetch
 	function select_where($tbl,$where)
-	{
-		$sel="select * from $tbl where $where";  // query
-		$run=$this->conn->query($sel);   // query run on db
-		while($fetch=$run->fetch_object()) // fetch all data
-		{
-			$arr[]=$fetch;
-		}
-		return $arr;
-	}
-	
-	
-	function select_dynamicwhere($tbl,$where)
 	{
 		$col_arr=array_keys($where); //array("0"=>"email","1"=>"password")
 		$value_arr=array_values($where);  //  array("0"=>"raj@gmail.com","1"=>"abc")
