@@ -99,6 +99,19 @@ class control extends model  // step 2 extends model class
 				include_once('manage_categories.php');
 			break;
 			
+			
+			case '/edit_categories':
+				if(isset($_REQUEST['editbtn']))
+				{
+					$id=$_REQUEST['editbtn'];
+					
+					$where=array("id"=>$id);
+					$res=$this->select_where('categories',$where);
+					$fetch=$res->fetch_object();
+					include_once('edit_categories.php');
+				}
+			break;
+			
 			case '/add_product':
 			
 				$cate_arr=$this->select('categories');

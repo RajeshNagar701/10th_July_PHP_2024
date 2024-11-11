@@ -24,7 +24,7 @@ class model{
 		return $arr;
 	}
 	
-	//where condition login / fetch
+	//where condition login / fetch where data
 	function select_where($tbl,$where)
 	{
 		$col_arr=array_keys($where); //array("0"=>"email","1"=>"password")

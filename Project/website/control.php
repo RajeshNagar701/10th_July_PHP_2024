@@ -116,6 +116,31 @@ class control extends model  // step 2 extends model class
 				include_once('login.php');
 			break;
 			
+			
+			case '/profile':
+			
+				$where=array("id"=>$_SESSION['userid']);
+				$res=$this->select_where('customer',$where);
+				$fetch=$res->fetch_object();
+				include_once('profile.php');
+			
+			break;
+			
+			case '/edituser':
+				if(isset($_REQUEST['editbtn']))
+				{
+					$id=$_REQUEST['editbtn'];
+					
+					$where=array("id"=>$id);
+					$res=$this->select_where('customer',$where);
+					$fetch=$res->fetch_object();
+					
+					$arr_country=$this->select('country');
+					include_once('edituser.php');
+				}
+			break;
+			
+			
 			case '/userlogout':
 			
 				unset($_SESSION['userid']);

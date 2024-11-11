@@ -68,16 +68,19 @@ function active($currect_page){
             </div>
             <div class="col-lg-3 text-right">
                 <div class="d-inline-flex align-items-center">
+				
 				<?php
 					if(isset($_SESSION['userid']))
 					{
 					?>
-                    <i class="fa fa-2x fa-user text-primary mr-3"></i>
-                    <div class="text-left">
-                        <h6 class="font-weight-semi-bold mb-1">
-							<?php echo $_SESSION['username']?>
-						</h6>
-                    </div>
+					<a href="profile">
+						<i class="fa fa-2x fa-user text-primary mr-3"></i>
+						<div class="text-left">
+							<h6 class="font-weight-semi-bold mb-1">
+								Hi ..<?php echo $_SESSION['username']?>/ MyAccount
+							</h6>
+						</div>
+					</a>
 					<?php	
 					}
 					?>
