@@ -46,7 +46,7 @@ include_once('header.php');
 							<td><?php echo $data->mobile?></td>
 							<td><?php echo $data->comment?></td>
 							<td>
-								<a href="" class="btn btn-danger">Delete</a>
+								<a href="delete?del_contacts=<?php echo $data->id?>" class="btn btn-danger">Delete</a>
 								<a href="" class="btn btn-primary">Edit</a>
 							</td>
 							

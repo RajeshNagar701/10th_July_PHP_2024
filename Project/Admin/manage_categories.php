@@ -45,7 +45,7 @@ include_once('header.php');
                         <td><?php echo $data->cate_name?></td>
                         <td><img src="upload/categories/<?php echo $data->cate_img?>" width="50px"/></td>
                         <td>
-							<a href="" class="btn btn-danger">Delete</a>
+							<a href="delete?del_categories=<?php echo $data->id?>" class="btn btn-danger">Delete</a>
 							<a href="edit_categories?editbtn=<?php echo $data->id?>" class="btn btn-primary">Edit</a>
 						</td>
                         

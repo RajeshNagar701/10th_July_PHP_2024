@@ -32,7 +32,6 @@ include_once('header.php');
 						<th>Profile</th>
                         <th>Name</th>
 						<th>Email</th>
-						<th>Password</th>
 						<th>Gender</th>
 						<th>Lag</th>
 						<th>Country</th>
@@ -49,12 +48,11 @@ include_once('header.php');
 							<td><img src="../website/img/customer/<?php echo $data->img?>"  width="50px"/></td>
 							<td><?php echo $data->name?></td>
 							<td><?php echo $data->email?></td>
-							<td><?php echo $data->password?></td>
 							<td><?php echo $data->gender?></td>
 							<td><?php echo $data->lag?></td>
 							<td><?php echo $data->cid?></td>
 							<td>
-								<a href="" class="btn btn-danger">Delete</a>
+								<a href="delete?del_customer=<?php echo $data->id?>" class="btn btn-danger">Delete</a>
 								<a href="" class="btn btn-primary">Edit</a>
 							</td>
 							

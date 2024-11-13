@@ -50,7 +50,7 @@ include_once('header.php');
 							<td><img src="upload/course/<?php echo $data->img?>" width="50px"></td>
 							<td><?php echo $data->description?></td>
 							<td>
-								<a href="" class="btn btn-danger">Delete</a>
+								<a href="delete?del_product=<?php echo $data->id?>" class="btn btn-danger">Delete</a>
 								<a href="" class="btn btn-primary">Edit</a>
 							</td>
 							

@@ -68,6 +68,22 @@ class model{
 	}
 	
 	
+	// delete from customer where id=1  
+	function delete_where($tbl,$where)
+	{
+		$col_arr=array_keys($where); //array("0"=>"email","1"=>"password")
+		$value_arr=array_values($where);  //  array("0"=>"raj@gmail.com","1"=>"abc")
+		
+		$del="delete from $tbl where 1=1";  // query continue
+		$i=0;
+		foreach($where as $w)
+		{
+			echo $del.=" and $col_arr[$i]='$value_arr[$i]'";
+			$i++;
+		}
+		$res=$this->conn->query($del);   // query run on db
+		return $res;
+	}
 	
 }
 $obj=new model;

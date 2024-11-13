@@ -163,6 +163,90 @@ class control extends model  // step 2 extends model class
 				include_once('manage_customer.php');
 			break;
 			
+			
+			
+			case '/delete':
+				
+				if(isset($_REQUEST['del_categories']))
+				{
+					$id=$_REQUEST['del_categories'];
+					$where=array("id"=>$id);
+					
+					// image get for delete
+					$sel_sel=$this->select_where('categories',$where);
+					$fetch=$sel_sel->fetch_object();
+					$del_img=$fetch->cate_img;
+					
+					$res=$this->delete_where('categories',$where);
+					if($res)
+					{
+						unlink('upload/categories/'.$del_img); // del image
+						echo "<script>
+							alert('Categories Deleted suuccessfully');
+							window.location='manage_categories';
+						</script>";
+					}
+				}
+				
+				if(isset($_REQUEST['del_product']))
+				{
+					$id=$_REQUEST['del_product'];
+					$where=array("id"=>$id);
+					
+					// image get for delete
+					$sel_sel=$this->select_where('products',$where);
+					$fetch=$sel_sel->fetch_object();
+					$del_img=$fetch->img;
+					
+					$res=$this->delete_where('products',$where);
+					if($res)
+					{
+						unlink('upload/course/'.$del_img); // del image
+						echo "<script>
+							alert('Products Deleted suuccessfully');
+							window.location='manage_product';
+						</script>";
+					}
+				}
+				if(isset($_REQUEST['del_customer']))
+				{
+					$id=$_REQUEST['del_customer'];
+					$where=array("id"=>$id);
+					
+					// image get for delete
+					$sel_sel=$this->select_where('customer',$where);
+					$fetch=$sel_sel->fetch_object();
+					$del_img=$fetch->img;
+					
+					$res=$this->delete_where('customer',$where);
+					if($res)
+					{
+						unlink('../website/img/customer/'.$del_img); // del image
+						echo "<script>
+							alert('Customer Deleted suuccessfully');
+							window.location='manage_customer';
+						</script>";
+					}
+				}
+				
+				if(isset($_REQUEST['del_contacts']))
+				{
+					$id=$_REQUEST['del_contacts'];
+					$where=array("id"=>$id);
+					$res=$this->delete_where('contacts',$where);
+					if($res)
+					{
+						echo "<script>
+							alert('Contacts Deleted suuccessfully');
+							window.location='manage_inquiry';
+						</script>";
+					}
+				}
+				
+				
+				
+			break;
+			
 			default:
 				include_once('pnf.php');
 			break;
