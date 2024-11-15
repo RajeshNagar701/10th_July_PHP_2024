@@ -52,6 +52,7 @@ include_once('header.php');
 							<td>
 								<a href="delete?del_product=<?php echo $data->id?>" class="btn btn-danger">Delete</a>
 								<a href="" class="btn btn-primary">Edit</a>
+								<a href="status?status_product=<?php echo $data->id?>" class="btn btn-success"><?php echo $data->status?></a>
 							</td>
 							
 						  </tr>

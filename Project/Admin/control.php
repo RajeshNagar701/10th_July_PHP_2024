@@ -108,7 +108,45 @@ class control extends model  // step 2 extends model class
 					$where=array("id"=>$id);
 					$res=$this->select_where('categories',$where);
 					$fetch=$res->fetch_object();
+					
+					$old_cate_img=$fetch->cate_img;
+					
 					include_once('edit_categories.php');
+					
+					if(isset($_REQUEST['save']))
+					{
+						$cate_name=$_REQUEST['cate_name'];
+						
+						if($_FILES['cate_img']['size']>0)
+						{
+							echo $cate_img=$_FILES['cate_img']['name'];
+							// upload img in folder
+							$path='upload/categories/'.$cate_img;     // path
+							$dupcate_img=$_FILES['cate_img']['tmp_name'];  // duplicate imag get
+							move_uploaded_file($dupcate_img,$path);  // move duplicate img in path
+							
+							$arr=array("cate_name"=>$cate_name,"cate_img"=>$cate_img);
+							unlink('upload/categories/'.$old_cate_img);
+						}
+						else
+						{
+							$arr=array("cate_name"=>$cate_name);
+						}
+						
+						$res=$this->update('categories',$arr,$where);
+						if($res)
+						{
+							echo "<script>
+								alert('Categories Update suuccessfully');
+								window.location='manage_categories';
+							</script>";
+						}
+						else
+						{
+							echo "Not success";
+						}
+					}
+					
 				}
 			break;
 			
@@ -246,6 +284,93 @@ class control extends model  // step 2 extends model class
 				
 				
 			break;
+			
+			
+			
+			case '/status':
+				
+				if(isset($_REQUEST['status_customer']))
+				{
+					$id=$_REQUEST['status_customer'];
+					$where=array("id"=>$id);
+					
+					// status get for delete
+					$sel_sel=$this->select_where('customer',$where);
+					$fetch=$sel_sel->fetch_object();
+					$status=$fetch->status;
+					
+					if($status=="Block")
+					{
+						$arr=array("status"=>"Unblock");
+						$res=$this->update('customer',$arr,$where);
+						if($res)
+						{
+							
+							echo "<script>
+								alert('Customer Unblock suuccessfully');
+								window.location='manage_customer';
+							</script>";
+						}
+					}
+					else
+					{
+						$arr=array("status"=>"Block");
+						$res=$this->update('customer',$arr,$where);
+						if($res)
+						{
+							unset($_SESSION['userid']);
+							unset($_SESSION['username']);
+							echo "<script>
+								alert('Customer Block suuccessfully');
+								window.location='manage_customer';
+							</script>";
+						}
+					}
+					
+				}
+				
+				
+				if(isset($_REQUEST['status_product']))
+				{
+					$id=$_REQUEST['status_product'];
+					$where=array("id"=>$id);
+					
+					// status get for delete
+					$sel_sel=$this->select_where('products',$where);
+					$fetch=$sel_sel->fetch_object();
+					$status=$fetch->status;
+					
+					if($status=="Not Available")
+					{
+						$arr=array("status"=>"Available");
+						$res=$this->update('products',$arr,$where);
+						if($res)
+						{
+							
+							echo "<script>
+								alert('Product Available suuccessfully');
+								window.location='manage_product';
+							</script>";
+						}
+					}
+					else
+					{
+						$arr=array("status"=>"Not Available");
+						$res=$this->update('products',$arr,$where);
+						if($res)
+						{
+							echo "<script>
+								alert('Product Not Available suuccessfully');
+								window.location='manage_product';
+							</script>";
+						}
+					}
+					
+				}
+				
+				
+			break;
+			
 			
 			default:
 				include_once('pnf.php');

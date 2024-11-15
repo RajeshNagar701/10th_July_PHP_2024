@@ -97,7 +97,7 @@
                                 <p class="help-block text-danger"></p>
                             </div>
 							<div class="control-group">
-                                <input type="file" name="img" class="form-control border-0 p-4" required="required" />
+                                <input type="file" name="img" class="form-control border-0 p-4"/>
                                 <img class="rounded mb-4 mb-lg-0" src="img/customer/<?php echo $fetch->img?>" height="50px" width="50px" alt="">
 								<p class="help-block text-danger"></p>
                             </div>

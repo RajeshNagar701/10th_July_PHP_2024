@@ -86,7 +86,7 @@ class control extends model  // step 2 extends model class
 					$email=$_REQUEST['email'];
 					$password=md5($_REQUEST['password']);
 					
-					$where=array("email"=>$email,"password"=>$password,"status"=>"Unblock");
+					$where=array("email"=>$email,"password"=>$password);
 					
 					//login
 					$res=$this->select_where('customer',$where);
@@ -97,13 +97,23 @@ class control extends model  // step 2 extends model class
 						
 						$fetch=$res->fetch_object();
 						
-						$_SESSION['username']=$fetch->name;
-						$_SESSION['userid']=$fetch->id;
-						
-						echo "<script>
-							alert('Login suuccessfully');
-							window.location='index';
-						</script>";
+						if($fetch->status=="Unblock")
+						{
+							$_SESSION['username']=$fetch->name;
+							$_SESSION['userid']=$fetch->id;
+							
+							echo "<script>
+								alert('Login suuccessfully');
+								window.location='index';
+							</script>";
+						}
+						else
+						{
+							echo "<script>
+							alert('Login failed due to Account Blocked');
+							window.location='login';
+							</script>";
+						}
 					}
 					else
 					{
@@ -135,8 +145,57 @@ class control extends model  // step 2 extends model class
 					$res=$this->select_where('customer',$where);
 					$fetch=$res->fetch_object();
 					
+					$del_img=$fetch->img;
+					
 					$arr_country=$this->select('country');
 					include_once('edituser.php');
+					
+					
+					if(isset($_REQUEST['submit']))
+					{
+						$name=$_REQUEST['name'];
+						$email=$_REQUEST['email'];
+						$gender=$_REQUEST['gender'];
+						
+						$lag_arr=$_REQUEST['lag'];
+						$lag=implode(",",$lag_arr);
+						
+						$cid=$_REQUEST['cid'];
+						
+						
+						if($_FILES['img']['size']>0)
+						{
+							$img=$_FILES['img']['name'];
+							// upload img in folder
+							$path='img/customer/'.$img;     // path
+							$dupimg=$_FILES['img']['tmp_name'];  // duplicate imag get
+							move_uploaded_file($dupimg,$path);  // move duplicate img in path
+							
+							$arr=array("name"=>$name,"email"=>$email,"gender"=>$gender,"lag"=>$lag
+							,"cid"=>$cid,"img"=>$img);
+							
+							unlink('img/customer/'.$del_img);
+						}
+						else
+						{
+							$arr=array("name"=>$name,"email"=>$email,"gender"=>$gender,"lag"=>$lag
+							,"cid"=>$cid);
+						}
+						
+						$res=$this->update('customer',$arr,$where);
+						if($res)
+						{
+							echo "<script>
+								alert('Update Data suuccessfully');
+								window.location='profile';
+							</script>";
+						}
+						else
+						{
+							echo "Not success";
+						}
+					}
+					
 				}
 			break;
 			
