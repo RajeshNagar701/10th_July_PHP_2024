@@ -1,0 +1,22 @@
+
+
+<button onclick="plus()">+</button>
+<h1 id="number">1</h1>
+<button onclick="minus()">-</button>
+
+
+<script>
+
+function plus(){
+	var number=document.getElementById('number').innerHTML;
+	number++;
+	document.getElementById('number').innerHTML=number;		
+}
+
+function minus(){
+	var number=document.getElementById('number').innerHTML;
+	number--;
+	document.getElementById('number').innerHTML=number;		
+}
+
+</script>
